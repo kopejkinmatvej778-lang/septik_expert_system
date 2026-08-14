@@ -1,0 +1,11 @@
+.env
+secrets/
+.venv/
+__pycache__/
+*.pyc
+storage/uploads/*
+storage/rendered/*
+storage/proposals/*
+!storage/uploads/.gitkeep
+!storage/rendered/.gitkeep
+!storage/proposals/.gitkeep

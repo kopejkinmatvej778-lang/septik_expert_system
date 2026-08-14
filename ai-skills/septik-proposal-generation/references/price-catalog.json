@@ -1,0 +1,1049 @@
+{
+  "catalog_id": "septik_expert_price_catalog",
+  "version": "2026-08-13",
+  "currency": "RUB",
+  "owner": "ООО \"Септик Эксперт\"",
+  "default_policy": {
+    "price_field": "standard_price",
+    "rule": "Агент использует обычный прайс из standard_price. Скидки, подарки и ручные цены применяются только если человек явно передал discount, gift, custom_price или owner_override.",
+    "no_guessing": "Если позиции нет в каталоге или цена помечена как needs_price, агент не придумывает цену, а возвращает missing_price_request.",
+    "site_prices": "Для оборудования АЭРОЛОС default - публичная цена с сайта производителя/каталога, если не указано иное.",
+    "local_prices": "Для монтажей, ЖБИ, труб, песка, кабеля и прочих работ default - стандартные цены, найденные в уже подготовленных КП проекта."
+  },
+  "sources": {
+    "aerolos_home": {
+      "url": "https://xn--80awibhj3f.xn--p1ai/",
+      "checked_at": "2026-08-13",
+      "note": "Главная страница АЭРОЛОС: модельный ряд и цена монтажа под ключ от 25 000."
+    },
+    "aerolos_models": {
+      "url": "https://xn--80awibhj3f.xn--p1ai/models/",
+      "checked_at": "2026-08-13",
+      "note": "Страницы моделей БИО, PRO, Горизонт."
+    },
+    "aerolos_equipment": {
+      "url": "https://xn--80awibhj3f.xn--p1ai/parts/equipment.html",
+      "checked_at": "2026-08-13",
+      "note": "Дополнительное оборудование: компрессоры, горловины, насос, крышка."
+    },
+    "aerolos_kesson": {
+      "url": "https://xn--80awibhj3f.xn--p1ai/aerolos-kesson.html",
+      "checked_at": "2026-08-13",
+      "note": "Кессон АЭРОЛОС 1200."
+    },
+    "aerolos_titanium_models": {
+      "url": "https://xn--80awibhj3f.xn--p1ai/models-pages/aerolos-titanium.html",
+      "checked_at": "2026-08-13",
+      "note": "Страницы моделей АЭРОЛОС Titanium и Titanium Pro."
+    },
+    "aerolos_prom_models": {
+      "url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-prom-50.html",
+      "checked_at": "2026-08-13",
+      "note": "Промышленные станции АЭРОЛОС ПРОМ."
+    },
+    "local_kp_history": {
+      "url": "workspace:tmp/*kp*.py, tmp/*contract*.py, tools/*.py",
+      "checked_at": "2026-08-13",
+      "note": "Цены из уже созданных КП/договоров Septik Expert. Используются как стандарт по работам/материалам и как история, но скидки на станции не применять автоматически."
+    }
+  },
+  "items": {
+    "station_aerolos_bio_4": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС БИО 4",
+      "aliases": ["АЭРОЛОС БИО 4", "Аэролос Био 4", "Станция АЭРОЛОС БИО 4"],
+      "unit": "шт",
+      "standard_price": 165000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-4.html"
+    },
+    "station_aerolos_bio_4_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС БИО 4 MIDI",
+      "aliases": ["АЭРОЛОС БИО 4 MIDI", "Аэролос Био 4 MIDI"],
+      "unit": "шт",
+      "standard_price": 165000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-4-midi.html"
+    },
+    "station_aerolos_bio_4_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС БИО 4 LONG",
+      "aliases": ["АЭРОЛОС БИО 4 LONG", "Аэролос Био 4 LONG"],
+      "unit": "шт",
+      "standard_price": 165000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-4-long.html"
+    },
+    "station_aerolos_bio_7": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС БИО 7",
+      "aliases": ["АЭРОЛОС БИО 7", "АЭРОЛОС 7", "Аэролос 7"],
+      "unit": "шт",
+      "standard_price": 235000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-7.html"
+    },
+    "station_aerolos_bio_7_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС БИО 7 MIDI",
+      "aliases": ["АЭРОЛОС БИО 7 MIDI", "Аэролос Био 7 MIDI"],
+      "unit": "шт",
+      "standard_price": 235000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-7-midi.html"
+    },
+    "station_aerolos_bio_7_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС БИО 7 LONG",
+      "aliases": ["АЭРОЛОС БИО 7 LONG", "Аэролос Био 7 LONG"],
+      "unit": "шт",
+      "standard_price": 235000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-7-long.html"
+    },
+    "station_aerolos_pro_4": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 4",
+      "aliases": ["АЭРОЛОС ПРО 4", "АЭРОЛОС PRO 4", "Аэролос Про 4"],
+      "unit": "шт",
+      "standard_price": 251900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-4.html"
+    },
+    "station_aerolos_pro_4_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 4 MIDI",
+      "aliases": ["АЭРОЛОС ПРО 4 MIDI", "Аэролос Про 4 MIDI"],
+      "unit": "шт",
+      "standard_price": 267900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-4-midi.html"
+    },
+    "station_aerolos_pro_4_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 4 LONG",
+      "aliases": ["АЭРОЛОС ПРО 4 LONG", "Аэролос Про 4 LONG"],
+      "unit": "шт",
+      "standard_price": 274900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-4-long.html"
+    },
+    "station_aerolos_pro_6": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 6",
+      "aliases": ["АЭРОЛОС ПРО 6", "АЭРОЛОС PRO 6", "Аэролос Про 6"],
+      "unit": "шт",
+      "standard_price": 281900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-6.html"
+    },
+    "station_aerolos_pro_6_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 6 MIDI",
+      "aliases": ["АЭРОЛОС ПРО 6 MIDI", "Аэролос Про 6 MIDI"],
+      "unit": "шт",
+      "standard_price": 297900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-6-midi.html"
+    },
+    "station_aerolos_pro_6_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 6 LONG",
+      "aliases": ["АЭРОЛОС ПРО 6 LONG", "Аэролос Про 6 LONG"],
+      "unit": "шт",
+      "standard_price": 304900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-6-long.html"
+    },
+    "station_aerolos_pro_8": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 8",
+      "aliases": ["АЭРОЛОС ПРО 8", "АЭРОЛОС PRO 8", "Аэролос Про 8"],
+      "unit": "шт",
+      "standard_price": 321900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-8.html"
+    },
+    "station_aerolos_pro_8_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 8 MIDI",
+      "aliases": ["АЭРОЛОС ПРО 8 MIDI", "Аэролос Про 8 MIDI"],
+      "unit": "шт",
+      "standard_price": 337900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-8-midi.html"
+    },
+    "station_aerolos_pro_8_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 8 LONG",
+      "aliases": ["АЭРОЛОС ПРО 8 LONG", "Аэролос Про 8 LONG"],
+      "unit": "шт",
+      "standard_price": 344900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-8-long.html"
+    },
+    "station_aerolos_pro_10": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 10",
+      "aliases": ["АЭРОЛОС ПРО 10", "АЭРОЛОС PRO 10", "Аэролос Про 10"],
+      "unit": "шт",
+      "standard_price": 361900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-10.html"
+    },
+    "station_aerolos_pro_10_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 10 MIDI",
+      "aliases": ["АЭРОЛОС ПРО 10 MIDI", "Аэролос Про 10 MIDI"],
+      "unit": "шт",
+      "standard_price": 377900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-10-midi.html"
+    },
+    "station_aerolos_pro_10_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 10 LONG",
+      "aliases": ["АЭРОЛОС ПРО 10 LONG", "Аэролос Про 10 LONG"],
+      "unit": "шт",
+      "standard_price": 384900,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-10-long.html"
+    },
+    "station_aerolos_pro_15": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 15",
+      "aliases": ["АЭРОЛОС ПРО 15", "АЭРОЛОС PRO 15", "Аэролос Про 15"],
+      "unit": "шт",
+      "standard_price": 455000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-15.html"
+    },
+    "station_aerolos_pro_15_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 15 MIDI",
+      "aliases": ["АЭРОЛОС ПРО 15 MIDI", "Аэролос Про 15 MIDI"],
+      "unit": "шт",
+      "standard_price": 470000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-15-midi.html"
+    },
+    "station_aerolos_pro_15_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 15 LONG",
+      "aliases": ["АЭРОЛОС ПРО 15 LONG", "Аэролос Про 15 LONG"],
+      "unit": "шт",
+      "standard_price": 485000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-15-long.html"
+    },
+    "station_aerolos_pro_20": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 20",
+      "aliases": ["АЭРОЛОС ПРО 20", "АЭРОЛОС PRO 20", "Аэролос Про 20"],
+      "unit": "шт",
+      "standard_price": 515000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-20.html"
+    },
+    "station_aerolos_pro_20_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 20 MIDI",
+      "aliases": ["АЭРОЛОС ПРО 20 MIDI", "Аэролос Про 20 MIDI"],
+      "unit": "шт",
+      "standard_price": 530000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-20-midi.html"
+    },
+    "station_aerolos_pro_20_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРО 20 LONG",
+      "aliases": ["АЭРОЛОС ПРО 20 LONG", "Аэролос Про 20 LONG"],
+      "unit": "шт",
+      "standard_price": 545000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-pro-20-long.html"
+    },
+    "station_aerolos_gorizont_4": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ГОРИЗОНТ 4",
+      "aliases": ["АЭРОЛОС ГОРИЗОНТ 4", "Аэролос Горизонт 4"],
+      "unit": "шт",
+      "standard_price": 125000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-gorizont-4.html"
+    },
+    "station_aerolos_gorizont_6": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ГОРИЗОНТ 6",
+      "aliases": ["АЭРОЛОС ГОРИЗОНТ 6", "Аэролос Горизонт 6"],
+      "unit": "шт",
+      "standard_price": 125000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-gorizont-6.html",
+      "warning": "На сайте цена совпадает с Горизонт 4; при сомнении уточнить у человека."
+    },
+    "station_aerolos_gorizont_8": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ГОРИЗОНТ 8",
+      "aliases": ["АЭРОЛОС ГОРИЗОНТ 8", "Аэролос Горизонт 8"],
+      "unit": "шт",
+      "standard_price": 125000,
+      "source": "aerolos_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-gorizont-8.html",
+      "warning": "На сайте цена совпадает с Горизонт 4; при сомнении уточнить у человека."
+    },
+    "station_aerolos_titanium_4": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium 4",
+      "aliases": ["АЭРОЛОС Titanium 4", "Аэролос Титаниум 4", "Аэролос Titanium 4"],
+      "unit": "шт",
+      "standard_price": 155900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-4.html"
+    },
+    "station_aerolos_titanium_6": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium 6",
+      "aliases": ["АЭРОЛОС Titanium 6", "Аэролос Титаниум 6", "Аэролос Titanium 6"],
+      "unit": "шт",
+      "standard_price": 210000,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-6.html"
+    },
+    "station_aerolos_titanium_pro_4": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 4",
+      "aliases": ["АЭРОЛОС Titanium Pro 4", "Аэролос Titanium Pro 4", "Аэролос Титаниум Про 4"],
+      "unit": "шт",
+      "standard_price": 216900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-4.html"
+    },
+    "station_aerolos_titanium_pro_4_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 4 MIDI",
+      "aliases": ["АЭРОЛОС Titanium Pro 4 MIDI", "Аэролос Titanium Pro 4 MIDI", "Аэролос Титаниум Про 4 MIDI"],
+      "unit": "шт",
+      "standard_price": 232900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-4-midi.html"
+    },
+    "station_aerolos_titanium_pro_4_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 4 LONG",
+      "aliases": ["АЭРОЛОС Titanium Pro 4 LONG", "Аэролос Titanium Pro 4 LONG", "Аэролос Титаниум Про 4 LONG"],
+      "unit": "шт",
+      "standard_price": 239900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-4-long.html"
+    },
+    "station_aerolos_titanium_pro_6": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 6",
+      "aliases": ["АЭРОЛОС Titanium Pro 6", "Аэролос Titanium Pro 6", "Аэролос Титаниум Про 6"],
+      "unit": "шт",
+      "standard_price": 246900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-6.html"
+    },
+    "station_aerolos_titanium_pro_6_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 6 MIDI",
+      "aliases": ["АЭРОЛОС Titanium Pro 6 MIDI", "Аэролос Titanium Pro 6 MIDI", "Аэролос Титаниум Про 6 MIDI"],
+      "unit": "шт",
+      "standard_price": 262900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-6-midi.html"
+    },
+    "station_aerolos_titanium_pro_6_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 6 LONG",
+      "aliases": ["АЭРОЛОС Titanium Pro 6 LONG", "Аэролос Titanium Pro 6 LONG", "Аэролос Титаниум Про 6 LONG"],
+      "unit": "шт",
+      "standard_price": 269900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-6-long.html"
+    },
+    "station_aerolos_titanium_pro_8": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 8",
+      "aliases": ["АЭРОЛОС Titanium Pro 8", "Аэролос Titanium Pro 8", "Аэролос Титаниум Про 8"],
+      "unit": "шт",
+      "standard_price": 286900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-8.html"
+    },
+    "station_aerolos_titanium_pro_8_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 8 MIDI",
+      "aliases": ["АЭРОЛОС Titanium Pro 8 MIDI", "Аэролос Titanium Pro 8 MIDI", "Аэролос Титаниум Про 8 MIDI"],
+      "unit": "шт",
+      "standard_price": 302900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-8-midi.html"
+    },
+    "station_aerolos_titanium_pro_8_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 8 LONG",
+      "aliases": ["АЭРОЛОС Titanium Pro 8 LONG", "Аэролос Titanium Pro 8 LONG", "Аэролос Титаниум Про 8 LONG"],
+      "unit": "шт",
+      "standard_price": 309900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-8-long.html"
+    },
+    "station_aerolos_titanium_pro_10": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 10",
+      "aliases": ["АЭРОЛОС Titanium Pro 10", "Аэролос Titanium Pro 10", "Аэролос Титаниум Про 10"],
+      "unit": "шт",
+      "standard_price": 326900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-10.html"
+    },
+    "station_aerolos_titanium_pro_10_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 10 MIDI",
+      "aliases": ["АЭРОЛОС Titanium Pro 10 MIDI", "Аэролос Titanium Pro 10 MIDI", "Аэролос Титаниум Про 10 MIDI"],
+      "unit": "шт",
+      "standard_price": 342900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-10-midi.html"
+    },
+    "station_aerolos_titanium_pro_10_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 10 LONG",
+      "aliases": ["АЭРОЛОС Titanium Pro 10 LONG", "Аэролос Titanium Pro 10 LONG", "Аэролос Титаниум Про 10 LONG"],
+      "unit": "шт",
+      "standard_price": 349900,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-10-long.html"
+    },
+    "station_aerolos_titanium_pro_15": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 15",
+      "aliases": ["АЭРОЛОС Titanium Pro 15", "Аэролос Titanium Pro 15", "Аэролос Титаниум Про 15"],
+      "unit": "шт",
+      "standard_price": 420000,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-15.html"
+    },
+    "station_aerolos_titanium_pro_15_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 15 MIDI",
+      "aliases": ["АЭРОЛОС Titanium Pro 15 MIDI", "Аэролос Titanium Pro 15 MIDI", "Аэролос Титаниум Про 15 MIDI"],
+      "unit": "шт",
+      "standard_price": 435000,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-15-midi.html"
+    },
+    "station_aerolos_titanium_pro_15_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 15 LONG",
+      "aliases": ["АЭРОЛОС Titanium Pro 15 LONG", "Аэролос Titanium Pro 15 LONG", "Аэролос Титаниум Про 15 LONG"],
+      "unit": "шт",
+      "standard_price": 450000,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-15-long.html"
+    },
+    "station_aerolos_titanium_pro_20": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 20",
+      "aliases": ["АЭРОЛОС Titanium Pro 20", "Аэролос Titanium Pro 20", "Аэролос Титаниум Про 20"],
+      "unit": "шт",
+      "standard_price": 480000,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-20.html"
+    },
+    "station_aerolos_titanium_pro_20_midi": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 20 MIDI",
+      "aliases": ["АЭРОЛОС Titanium Pro 20 MIDI", "Аэролос Titanium Pro 20 MIDI", "Аэролос Титаниум Про 20 MIDI"],
+      "unit": "шт",
+      "standard_price": 495000,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-20-midi.html"
+    },
+    "station_aerolos_titanium_pro_20_long": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС Titanium Pro 20 LONG",
+      "aliases": ["АЭРОЛОС Titanium Pro 20 LONG", "Аэролос Titanium Pro 20 LONG", "Аэролос Титаниум Про 20 LONG"],
+      "unit": "шт",
+      "standard_price": 510000,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-titanium-pro-20-long.html"
+    },
+    "station_aerolos_prom_50": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРОМ 50",
+      "aliases": ["АЭРОЛОС ПРОМ 50", "Аэролос Пром 50"],
+      "unit": "шт",
+      "standard_price": 950000,
+      "source": "aerolos_prom_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-prom-50.html"
+    },
+    "station_aerolos_prom_100": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРОМ 100",
+      "aliases": ["АЭРОЛОС ПРОМ 100", "Аэролос Пром 100"],
+      "unit": "шт",
+      "standard_price": 1600000,
+      "source": "aerolos_prom_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-prom-100.html"
+    },
+    "station_aerolos_prom_150": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРОМ 150",
+      "aliases": ["АЭРОЛОС ПРОМ 150", "Аэролос Пром 150"],
+      "unit": "шт",
+      "standard_price": 2200000,
+      "source": "aerolos_prom_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-prom-150.html"
+    },
+    "station_aerolos_prom_200": {
+      "category": "equipment",
+      "name": "Станция АЭРОЛОС ПРОМ 200",
+      "aliases": ["АЭРОЛОС ПРОМ 200", "Аэролос Пром 200"],
+      "unit": "шт",
+      "standard_price": 3000000,
+      "source": "aerolos_prom_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models/aerolos-prom-200.html"
+    },
+    "aerolos_kesson_1200": {
+      "category": "equipment",
+      "name": "АЭРОЛОС КЕССОН 1200",
+      "aliases": ["Кессон Аэролос", "АЭРОЛОС КЕССОН 1200", "Аэролос кессон"],
+      "unit": "шт",
+      "standard_price": 115000,
+      "site_sale_price": 99000,
+      "source": "aerolos_kesson",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/aerolos-kesson.html",
+      "discount_rule": "Цена 99 000 используется только если человек явно попросил применить скидку/акцию."
+    },
+    "aerolos_titanium_kesson": {
+      "category": "equipment",
+      "name": "КЕССОН АЭРОЛОС Titanium",
+      "aliases": ["КЕССОН АЭРОЛОС Titanium", "Кессон Аэролос Titanium", "Аэролос Титаниум кессон"],
+      "unit": "шт",
+      "standard_price": 99000,
+      "source": "aerolos_titanium_models",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/models-pages/aerolos-titanium-kesson.html"
+    },
+    "compressor_block": {
+      "category": "materials",
+      "name": "Компрессорный блок",
+      "aliases": ["Компрессорный блок"],
+      "unit": "шт",
+      "standard_price": 12000,
+      "source": "aerolos_models"
+    },
+    "compressor_jecod_pa_100": {
+      "category": "materials",
+      "name": "Компрессор Jecod PA-100",
+      "aliases": ["Компрессор Jecod", "Jecod PA-100", "Компрессор Jecod PA-100"],
+      "unit": "шт",
+      "standard_price": 12000,
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/compressor-jecod.html",
+      "specs": {
+        "productivity_l_min": 100,
+        "power_w": 85,
+        "compatibility": "АЭРОЛОС ГОРИЗОНТ"
+      }
+    },
+    "compressor_secoh": {
+      "category": "materials",
+      "name": "Компрессор Secoh JDK-40",
+      "aliases": ["Компрессор Secoh", "Компрессор Secoh JDK-40", "Secoh JDK-40"],
+      "unit": "шт",
+      "standard_price": 15000,
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/compressor-secoh.html",
+      "specs": {
+        "productivity_l_min": 40,
+        "power_w": 60,
+        "compatibility": "АЭРОЛОС БИО 4-7, АЭРОЛОС PRO 4, АЭРОЛОС ГОРИЗОНТ 4"
+      }
+    },
+    "compressor_hiblow_hp_80": {
+      "category": "materials",
+      "name": "Компрессор Hiblow HP-80",
+      "aliases": ["Компрессор Hiblow", "Hiblow HP-80"],
+      "unit": "шт",
+      "standard_price": 21000,
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/compressor-hiblow.html",
+      "specs": {
+        "productivity_l_min": 80,
+        "power_w": 71,
+        "compatibility": "АЭРОЛОС PRO 8 и выше, интенсивное использование"
+      }
+    },
+    "pump_dab_verty_nova_200": {
+      "category": "materials",
+      "name": "Насос DAB Verty Nova 200",
+      "aliases": ["Насос DAB Verty Nova 200", "Насос дренажный DAB Vertynova", "DAB Verty Nova 200"],
+      "unit": "шт",
+      "standard_price": 32000,
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/nasos-dab.html",
+      "specs": {
+        "productivity_l_h": 6000,
+        "power_w": 200,
+        "head_m": 6,
+        "compatibility": "АЭРОЛОС PRO, принудительный отвод очищенной воды"
+      }
+    },
+    "gorlovina_bio": {
+      "category": "materials",
+      "name": "Горловина АЭРОЛОС БИО",
+      "aliases": ["Горловина АЭРОЛОС БИО", "Горловина БИО"],
+      "unit": "шт",
+      "standard_price_from": 14500,
+      "standard_price_to": 22500,
+      "price_type": "from",
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/gorlovina-bio.html",
+      "variants": ["gorlovina_bio_300", "gorlovina_bio_600"],
+      "warning": "Для точного расчета используй позицию 300 мм или 600 мм."
+    },
+    "gorlovina_bio_300": {
+      "category": "materials",
+      "name": "Горловина АЭРОЛОС БИО 300 мм",
+      "aliases": ["Горловина АЭРОЛОС БИО 300 мм", "Горловина БИО 300", "Горловина БИО 300 мм"],
+      "unit": "шт",
+      "standard_price": 14500,
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/gorlovina-bio.html",
+      "specs": {
+        "diameter_mm": 750,
+        "height_mm": 300,
+        "compatibility": "АЭРОЛОС БИО"
+      }
+    },
+    "gorlovina_bio_600": {
+      "category": "materials",
+      "name": "Горловина АЭРОЛОС БИО 600 мм",
+      "aliases": ["Горловина АЭРОЛОС БИО 600 мм", "Горловина БИО 600", "Горловина БИО 600 мм"],
+      "unit": "шт",
+      "standard_price": 22500,
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/gorlovina-bio.html",
+      "specs": {
+        "diameter_mm": 750,
+        "height_mm": 600,
+        "compatibility": "АЭРОЛОС БИО"
+      }
+    },
+    "gorlovina_pro": {
+      "category": "materials",
+      "name": "Горловина АЭРОЛОС PRO",
+      "aliases": ["Горловина АЭРОЛОС PRO", "Горловина АЭРОЛОС ПРО", "Горловина ПРО"],
+      "unit": "шт",
+      "standard_price_from": 18000,
+      "standard_price_to": 25000,
+      "price_type": "from",
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/gorlovina-pro.html",
+      "variants": ["gorlovina_pro_300", "gorlovina_pro_600"],
+      "warning": "Для точного расчета используй позицию 300 мм или 600 мм."
+    },
+    "gorlovina_pro_300": {
+      "category": "materials",
+      "name": "Горловина АЭРОЛОС PRO 300 мм",
+      "aliases": ["Горловина АЭРОЛОС PRO 300 мм", "Горловина АЭРОЛОС ПРО 300 мм", "Горловина ПРО 300", "Горловина PRO 300"],
+      "unit": "шт",
+      "standard_price": 18000,
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/gorlovina-pro.html",
+      "specs": {
+        "diameter_mm": 950,
+        "height_mm": 300,
+        "compatibility": "АЭРОЛОС PRO"
+      }
+    },
+    "gorlovina_pro_600": {
+      "category": "materials",
+      "name": "Горловина АЭРОЛОС PRO 600 мм",
+      "aliases": ["Горловина АЭРОЛОС PRO 600 мм", "Горловина АЭРОЛОС ПРО 600 мм", "Горловина ПРО 600", "Горловина PRO 600"],
+      "unit": "шт",
+      "standard_price": 25000,
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/gorlovina-pro.html",
+      "specs": {
+        "diameter_mm": 950,
+        "height_mm": 600,
+        "compatibility": "АЭРОЛОС PRO"
+      }
+    },
+    "lid_aerolos": {
+      "category": "materials",
+      "name": "Крышка для горловины",
+      "aliases": ["Крышка для горловины", "Крышка АЭРОЛОС"],
+      "unit": "шт",
+      "standard_price": 10000,
+      "source": "aerolos_equipment",
+      "source_url": "https://xn--80awibhj3f.xn--p1ai/parts/kryshka.html",
+      "specs": {
+        "diameter_mm": 950,
+        "material": "HDPE",
+        "compatibility": "Все модели"
+      }
+    },
+    "pump_aquario": {
+      "category": "materials",
+      "name": "Насос дренажный Акварио",
+      "aliases": ["Насос дренажный Акварио", "Акварио"],
+      "unit": "шт",
+      "standard_price": 10000,
+      "source": "local_kp_history"
+    },
+    "sand_delivery_10t": {
+      "category": "materials",
+      "name": "Песок с доставкой 10 т",
+      "aliases": ["Песок с доставкой 10 т", "Песок 10 тонн"],
+      "unit": "рейс",
+      "standard_price": 12000,
+      "seen_prices": [12000, 14000, 15000],
+      "source": "local_kp_history"
+    },
+    "sand_delivery_15t": {
+      "category": "materials",
+      "name": "Песок с доставкой 15 т",
+      "aliases": ["Песок с доставкой 15 т"],
+      "unit": "рейс",
+      "standard_price": 16000,
+      "source": "local_kp_history"
+    },
+    "sand_delivery_20t": {
+      "category": "materials",
+      "name": "Песок с доставкой 20 т",
+      "aliases": ["Песок с доставкой 20 т", "Песок 20 тонн"],
+      "unit": "рейс",
+      "standard_price": 20000,
+      "source": "local_kp_history"
+    },
+    "gravel_3t": {
+      "category": "materials",
+      "name": "Гравий 3 тонны",
+      "aliases": ["Гравий 3 тонны"],
+      "unit": "рейс",
+      "standard_price": 8000,
+      "seen_prices": [8000, 9000, 15000],
+      "source": "local_kp_history"
+    },
+    "geotextile": {
+      "category": "materials",
+      "name": "Геотекстиль",
+      "aliases": ["Геотекстиль"],
+      "unit": "шт",
+      "standard_price": 2000,
+      "source": "local_kp_history"
+    },
+    "pipe_pvc_110": {
+      "category": "materials",
+      "name": "Труба канализационная ПВХ D = 110 мм",
+      "aliases": ["Труба канализационная ПВХ D = 110 мм", "Труба ПВХ 110"],
+      "unit": "м",
+      "standard_price": 500,
+      "source": "local_kp_history"
+    },
+    "discharge_pipe": {
+      "category": "materials",
+      "name": "Труба на выброс",
+      "aliases": ["Труба на выброс", "Труба на вывод", "Труба до колодца"],
+      "unit": "м",
+      "standard_price": 500,
+      "source": "local_kp_history"
+    },
+    "cable_corrugation": {
+      "category": "materials",
+      "name": "Кабель с гофротрубой",
+      "aliases": ["Кабель с гофротрубой", "Кабель с гофрой"],
+      "unit": "м",
+      "standard_price": 150,
+      "source": "local_kp_history"
+    },
+    "heating_cable_material": {
+      "category": "materials",
+      "name": "Греющий кабель",
+      "aliases": ["Греющий кабель"],
+      "unit": "м",
+      "standard_price": 1000,
+      "source": "local_kp_history"
+    },
+    "cement_bag": {
+      "category": "materials",
+      "name": "Цемент",
+      "aliases": ["Цемент"],
+      "unit": "мешок",
+      "standard_price": 700,
+      "source": "local_kp_history"
+    },
+    "jbi_ring_d_1_5": {
+      "category": "materials",
+      "name": "ЖБИ кольцо D = 1,5 м",
+      "aliases": ["ЖБИ кольцо D = 1,5 м", "Кольцо ЖБИ D = 1,5 м"],
+      "unit": "шт",
+      "standard_price": 6000,
+      "seen_prices": [5000, 6000],
+      "source": "local_kp_history"
+    },
+    "jbi_lid_d_1_5": {
+      "category": "materials",
+      "name": "ЖБИ крышка D = 1,5 м",
+      "aliases": ["ЖБИ крышка D = 1,5 м", "Крышка ЖБИ D = 1,5 м"],
+      "unit": "шт",
+      "standard_price": 6000,
+      "seen_prices": [5000, 6000],
+      "source": "local_kp_history"
+    },
+    "jbi_extension_ring_30cm": {
+      "category": "materials",
+      "name": "ЖБИ добор 30 см",
+      "aliases": ["ЖБИ добор 30 см", "Доборное кольцо 30 см"],
+      "unit": "шт",
+      "standard_price": 3000,
+      "source": "local_kp_history"
+    },
+    "sewer_manhole_lid": {
+      "category": "materials",
+      "name": "Люк канализационный",
+      "aliases": ["Люк канализационный"],
+      "unit": "шт",
+      "standard_price": 1500,
+      "source": "local_kp_history"
+    },
+    "earthworks_station": {
+      "category": "works",
+      "name": "Земляные работы по монтажу станции",
+      "aliases": ["Земляные работы экскаватором", "Земляные работы по монтажу станции"],
+      "unit": "услуга",
+      "standard_price": 21000,
+      "seen_prices": [21000, 23000, 25000],
+      "source": "local_kp_history",
+      "warning": "Если грунт/условия сложные или человек указал другую цену, использовать custom_price."
+    },
+    "station_installation": {
+      "category": "works",
+      "name": "Монтаж станции",
+      "aliases": ["Монтаж станции", "Монтаж станции в готовый котлован", "Монтаж станции и пусконаладка"],
+      "unit": "услуга",
+      "standard_price": 30000,
+      "seen_prices": [30000, 33000],
+      "source": "local_kp_history"
+    },
+    "pipe_laying": {
+      "category": "works",
+      "name": "Прокладка отводящих и подводящих труб",
+      "aliases": ["Прокладка отводящих и подводящих труб", "Прокладка вывода", "Прокладка трубы до колодца"],
+      "unit": "м",
+      "standard_price": 1000,
+      "seen_prices": [1000, 1500],
+      "source": "local_kp_history"
+    },
+    "discharge_pipe_laying": {
+      "category": "works",
+      "name": "Прокладка трубы на выброс",
+      "aliases": ["Прокладка трубы на выброс"],
+      "unit": "м",
+      "standard_price": 1000,
+      "seen_prices": [1000, 1500],
+      "source": "local_kp_history"
+    },
+    "heating_cable_laying": {
+      "category": "works",
+      "name": "Прокладка греющего кабеля",
+      "aliases": ["Прокладка греющего кабеля"],
+      "unit": "м",
+      "standard_price": 1000,
+      "source": "local_kp_history"
+    },
+    "jbi_well_installation": {
+      "category": "works",
+      "name": "Монтаж ЖБИ колодца",
+      "aliases": ["Монтаж ЖБИ колодца", "Монтаж бетонного колодца"],
+      "unit": "услуга",
+      "standard_price": 10000,
+      "seen_prices": [10000, 11000],
+      "source": "local_kp_history"
+    },
+    "jbi_delivery": {
+      "category": "works",
+      "name": "Доставка ЖБИ изделий",
+      "aliases": ["Доставка ЖБИ изделий"],
+      "unit": "услуга",
+      "standard_price": 11000,
+      "seen_prices": [11000, 12000],
+      "source": "local_kp_history"
+    },
+    "station_delivery": {
+      "category": "works",
+      "name": "Доставка станции до участка",
+      "aliases": ["Доставка станции до участка", "Доставка станции до участка заказчика"],
+      "unit": "услуга",
+      "standard_price": 5000,
+      "seen_prices": [5000, 10000],
+      "source": "local_kp_history",
+      "warning": "Если адрес далеко или доставка нестандартная, агент должен попросить уточнение."
+    },
+    "customer_sand_transportation": {
+      "category": "works",
+      "name": "Транспортировка песка заказчика",
+      "aliases": ["Транспортировка песка заказчика"],
+      "unit": "услуга",
+      "standard_price": 5000,
+      "source": "local_kp_history"
+    },
+    "kesson_installation": {
+      "category": "works",
+      "name": "Установка кессона",
+      "aliases": ["Установка кессона"],
+      "unit": "услуга",
+      "standard_price": 30000,
+      "source": "local_kp_history"
+    },
+    "casing_pipe_extension": {
+      "category": "works",
+      "name": "Наращивание обсадной трубы",
+      "aliases": ["Наращивание обсадной трубы"],
+      "unit": "услуга",
+      "standard_price": 5000,
+      "source": "local_kp_history"
+    },
+    "pump_reinstall": {
+      "category": "works",
+      "name": "Демонтаж-монтаж насоса",
+      "aliases": ["Демонтаж-монтаж насоса"],
+      "unit": "услуга",
+      "standard_price": 10000,
+      "source": "local_kp_history"
+    },
+    "kesson_piping": {
+      "category": "works",
+      "name": "Обвязка кессона",
+      "aliases": ["Обвязка кессона"],
+      "unit": "услуга",
+      "standard_price": 10000,
+      "source": "local_kp_history"
+    },
+    "concrete_slab": {
+      "category": "materials",
+      "name": "Бетонная плита",
+      "aliases": ["Бетонная плита"],
+      "unit": "шт",
+      "standard_price": 15000,
+      "source": "local_kp_history"
+    },
+    "tingard_mounting_kit": {
+      "category": "materials",
+      "name": "Монтажный комплект Тингард",
+      "aliases": ["Монтажный комплект Тингард"],
+      "unit": "компл.",
+      "standard_price": 20000,
+      "source": "local_kp_history"
+    },
+    "foam_sheet_pack_30": {
+      "category": "materials",
+      "name": "Утеплитель 30 листов",
+      "aliases": ["Утеплитель 30 листов", "Пенопласт 30 листов"],
+      "unit": "компл.",
+      "standard_price": 7500,
+      "source": "local_kp_history"
+    },
+    "mounting_foam": {
+      "category": "materials",
+      "name": "Пена монтажная",
+      "aliases": ["Пена монтажная"],
+      "unit": "баллон",
+      "standard_price": 500,
+      "source": "local_kp_history"
+    },
+    "spray_insulation": {
+      "category": "materials",
+      "name": "Утеплитель напыляемый",
+      "aliases": ["Утеплитель напыляемый"],
+      "unit": "баллон",
+      "standard_price": 1000,
+      "source": "local_kp_history"
+    },
+    "cellar_tingard_optium_l": {
+      "category": "equipment",
+      "name": "Погреб Тингард Оптиум L",
+      "aliases": ["Погреб Тингард Оптиум L"],
+      "unit": "шт",
+      "standard_price": 293000,
+      "source": "local_kp_history"
+    },
+    "cellar_tingard_prestige_1900_side": {
+      "category": "equipment",
+      "name": "Погреб Тингард Престиж 1900, боковой вход",
+      "aliases": ["Погреб Тингард Престиж 1900, боковой вход"],
+      "unit": "шт",
+      "standard_price": 300000,
+      "source": "local_kp_history"
+    },
+    "cellar_installation": {
+      "category": "works",
+      "name": "Монтаж погреба",
+      "aliases": ["Монтаж погреба", "Установка погреба"],
+      "unit": "услуга",
+      "standard_price": 70000,
+      "seen_prices": [70000, 100000],
+      "source": "local_kp_history",
+      "warning": "Если условия сложные, использовать custom_price."
+    },
+    "cellar_excavator": {
+      "category": "works",
+      "name": "Экскаватор для погреба",
+      "aliases": ["Экскаватор", "Работа экскаватора"],
+      "unit": "услуга",
+      "standard_price": 25000,
+      "seen_prices": [25000, 30000],
+      "source": "local_kp_history"
+    },
+    "manipulator": {
+      "category": "works",
+      "name": "Манипулятор",
+      "aliases": ["Манипулятор"],
+      "unit": "услуга",
+      "standard_price": 10000,
+      "source": "local_kp_history"
+    },
+    "cesspool_truck": {
+      "category": "works",
+      "name": "Ассенизатор",
+      "aliases": ["Ассенизатор"],
+      "unit": "услуга",
+      "standard_price": 15000,
+      "source": "local_kp_history"
+    },
+    "construction_waste_removal": {
+      "category": "works",
+      "name": "Вывоз строительного мусора",
+      "aliases": ["Вывоз строительного мусора"],
+      "unit": "рейс",
+      "standard_price": 20000,
+      "source": "local_kp_history"
+    }
+  },
+  "unknown_price_request_schema": {
+    "type": "missing_price_request",
+    "item_name": "string",
+    "category": "equipment|materials|works",
+    "unit": "шт|м|рейс|услуга|компл.|мешок|баллон",
+    "quantity": "number|string",
+    "context": "Что нужно посчитать и почему цена нужна",
+    "blocking": true
+  },
+  "price_update_request_schema": {
+    "type": "price_catalog_update_request",
+    "item_name": "string",
+    "category": "equipment|materials|works",
+    "unit": "шт|м|рейс|услуга|компл.|мешок|баллон",
+    "standard_price": "number",
+    "aliases": ["string"],
+    "source": "human_input|supplier_invoice|official_site|previous_confirmed_proposal",
+    "approved_by": "owner|manager"
+  }
+}

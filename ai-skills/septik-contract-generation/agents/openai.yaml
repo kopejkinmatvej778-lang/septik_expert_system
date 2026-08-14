@@ -1,0 +1,7 @@
+interface:
+  display_name: "Генератор договоров Септик Эксперт"
+  short_description: "Договоры DOCX/PDF по данным КП"
+  default_prompt: "Use $septik-contract-generation to prepare a Septik Expert contract from a confirmed proposal, client identity data, and montage date."
+
+policy:
+  allow_implicit_invocation: true

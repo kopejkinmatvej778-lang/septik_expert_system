@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1786724042472,
+      "tag": "0000_perpetual_senator_kelly",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1786724066257,
+      "tag": "0001_cheerful_sunset_bain",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1786726185024,
+      "tag": "0002_supreme_slayback",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Генератор КП Септик Эксперт"
+  short_description: "КП в PNG по замеру и прайсу"
+  default_prompt: "Use $septik-proposal-generation to prepare a Septik Expert commercial proposal from client, measurement, and pricing data."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,15 @@
+[Unit]
+Description=Septik Expert Telegram KP Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/septik-kp-bot
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/septik-kp-bot/.venv/bin/python -m septik_kp_bot
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
