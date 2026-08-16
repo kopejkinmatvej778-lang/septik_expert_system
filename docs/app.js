@@ -23,135 +23,13 @@ const addDays = (days, hour = 10, minute = 0) => {
   return date.toISOString();
 };
 
-const demoData = {
-  measurements: [
-    {
-      id: "m-101",
-      source: "amoCRM",
-      client: "Айрат",
-      phone: "+7 917 000-21-44",
-      address: "Нагаево, ул. Сосновая, 18",
-      deal: "Аэролос Био 5",
-      measurer: "Виталий",
-      dueAt: addDays(0, 12, 30),
-      status: "Назначить замер",
-      note: "Ответственный за замер Виталий. Проверить подъезд техники, УГВ и место под сброс.",
-      amoLeadId: 44821801,
-    },
-    {
-      id: "m-102",
-      source: "amoCRM",
-      client: "Наталья",
-      phone: "+7 937 000-16-80",
-      address: "Булгаково, Полевая, 7",
-      deal: "Подбор станции",
-      measurer: "Егор",
-      dueAt: addDays(0, 16, 0),
-      status: "Активная задача: замер",
-      note: "Замерщик Егор. Клиент хочет сравнить Bio и Pro.",
-      amoLeadId: 44821802,
-    },
-    {
-      id: "m-103",
-      source: "task",
-      client: "Ренат",
-      phone: "+7 917 000-61-09",
-      address: "Жилино, ул. Лесная, 26",
-      deal: "Монтаж под ключ",
-      measurer: "",
-      dueAt: addDays(1, 9, 0),
-      status: "Нужен ответственный",
-      note: "В карточке есть задача замер, но замерщик не указан.",
-      amoLeadId: 44821803,
-    },
-  ],
-  montages: [
-    {
-      id: "mt-201",
-      date: addDays(1, 9, 0),
-      client: "Линар",
-      address: "Отары, Forest Village",
-      product: "Аэролос Био 4",
-      crew: "Бригада 1",
-      materials: "Песок 5 м3, гравий 2 м3",
-      revenue: 270000,
-    },
-    {
-      id: "mt-202",
-      date: addDays(3, 8, 30),
-      client: "Дилара",
-      address: "Новые Сокуры",
-      product: "Аэролос Про 4",
-      crew: "Бригада 2",
-      materials: "Песок 4 м3, гравий 2 м3",
-      revenue: 384400,
-    },
-    {
-      id: "mt-203",
-      date: addDays(5, 9, 0),
-      client: "Александр",
-      address: "Тарлаши",
-      product: "Аэролос Про 8",
-      crew: "Бригада 1",
-      materials: "Песок 6 м3",
-      revenue: 399000,
-    },
-  ],
-  clients: [
-    {
-      id: "c-301",
-      name: "Линар",
-      address: "Отары, Forest Village",
-      phone: "+7 987 000-55-10",
-      proposals: [
-        { title: "КП Линар Отары Аэролос Био 4", type: "PNG", url: "https://placehold.co/900x1200/png?text=KP+Linar+Bio+4" },
-        { title: "КП Линар Отары Аэролос Про 4", type: "PNG", url: "https://placehold.co/900x1200/png?text=KP+Linar+Pro+4" },
-      ],
-      contracts: [
-        { title: "Договор Аэролос Био 4 Линар", type: "PDF", url: "#" },
-      ],
-    },
-    {
-      id: "c-302",
-      name: "Дилара",
-      address: "Новые Сокуры",
-      phone: "+7 927 000-40-21",
-      proposals: [
-        { title: "КП Дилара Новые Сокуры Аэролос Про 4", type: "PNG", url: "https://placehold.co/900x1200/png?text=KP+Dilara+Pro+4" },
-      ],
-      contracts: [
-        { title: "Договор Аэролос Про 4 Муртазина Дилара", type: "PDF", url: "#" },
-      ],
-    },
-    {
-      id: "c-303",
-      name: "Гульшат",
-      address: "Сокуры",
-      phone: "+7 917 000-77-12",
-      proposals: [
-        { title: "КП Гульшат Погреб Тингард", type: "PNG", url: "https://placehold.co/900x1200/png?text=KP+Gulshat+Tingard" },
-      ],
-      contracts: [
-        { title: "Договор поставки погреба Гульшат", type: "PDF", url: "#" },
-      ],
-    },
-  ],
-  sales: [
-    { id: "s-401", date: addDays(-2), client: "Линар", source: "Telegram", stage: "Монтаж назначен", amount: 270000, status: "won" },
-    { id: "s-402", date: addDays(-6), client: "Дилара", source: "Avito", stage: "Договор", amount: 384400, status: "won" },
-    { id: "s-403", date: addDays(-12), client: "Ренат", source: "Сайт", stage: "КП отправлено", amount: 312000, status: "open" },
-    { id: "s-404", date: addDays(-32), client: "Айрат", source: "Рекомендации", stage: "Замер", amount: 246000, status: "open" },
-  ],
-  tasks: [
-    { id: "t-501", title: "Поставить задачу по сделке Ренат", owner: "ИИ-агент", dueAt: addDays(0, 18), status: "Сегодня" },
-    { id: "t-502", title: "Уточнить поставку песка по монтажу Линар", owner: "Матвей", dueAt: addDays(0, 17), status: "Сегодня" },
-    { id: "t-503", title: "Проверить сделки без задач", owner: "ИИ-агент", dueAt: addDays(1, 18), status: "Автоматически" },
-  ],
-  agentEvents: [
-    { time: "18:00", text: "Найдено 3 сделки без задач, создано 3 следующих шага." },
-    { time: "18:01", text: "В сделке Ренат нет замерщика, требуется назначить ответственного." },
-    { time: "18:02", text: "По КП Линар выручка внесена в бюджет сделки." },
-  ],
+const emptyData = {
+  measurements: [],
+  montages: [],
+  clients: [],
+  sales: [],
+  tasks: [],
+  agentEvents: [],
 };
 
 const elements = {
@@ -222,6 +100,136 @@ const searchText = (item) => Object.values(item)
   .join(" ")
   .toLowerCase();
 
+const parseMoney = (value) => {
+  const normalized = String(value || "").replace(/[^\d,-]/g, "").replace(",", ".");
+  return Number.parseFloat(normalized) || 0;
+};
+
+const parseDateValue = (value) => {
+  const text = String(value || "").trim();
+  if (!text) return new Date().toISOString();
+  const normalized = text.replace(/^(\d{2})\.(\d{2})\.(\d{4})(.*)$/u, "$3-$2-$1$4").replace(" ", "T");
+  const date = new Date(normalized);
+  return Number.isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
+};
+
+const inferMeasurer = (text) => {
+  const value = String(text || "");
+  if (/егор/iu.test(value)) return "Егор";
+  if (/витал/iu.test(value)) return "Виталий";
+  return "";
+};
+
+const normalizeDocument = (row) => {
+  const type = String(row["Тип"] || "").toUpperCase().includes("КП") ? "PNG" : "PDF";
+  return {
+    title: row["Оборудование"] || row["Тип"] || "Документ",
+    type,
+    url: row["Файл PNG/PDF"] || row["Папка клиента"] || "#",
+  };
+};
+
+const normalizeSheetsDashboard = (raw) => {
+  const sheets = raw.sheets || {};
+  const documentRows = sheets["Документы"]?.rows || [];
+  const documentsByClient = new Map();
+
+  documentRows.forEach((row) => {
+    const key = `${row["Клиент"] || ""}|${row["Телефон"] || ""}`.toLowerCase();
+    if (!documentsByClient.has(key)) {
+      documentsByClient.set(key, { proposals: [], contracts: [] });
+    }
+    const bucket = documentsByClient.get(key);
+    const document = normalizeDocument(row);
+    if (document.type === "PNG") {
+      bucket.proposals.push(document);
+    } else {
+      bucket.contracts.push(document);
+    }
+  });
+
+  const clients = (sheets["Клиенты"]?.rows || []).map((row, index) => {
+    const key = `${row["Клиент"] || ""}|${row["Телефон"] || ""}`.toLowerCase();
+    const documents = documentsByClient.get(key) || { proposals: [], contracts: [] };
+    return {
+      id: `client-${row["amo lead id"] || index}`,
+      name: row["Клиент"] || "Без имени",
+      address: row["Адрес"] || "",
+      phone: row["Телефон"] || "",
+      proposals: documents.proposals,
+      contracts: documents.contracts,
+    };
+  });
+
+  const measurements = [
+    ...(raw.measurements || []),
+    ...(sheets["Замеры"]?.rows || []).map((row, index) => ({
+    id: `measurement-${row["amo lead id"] || index}`,
+    source: row["Источник"] || "Google Sheets",
+    client: row["Клиент"] || "Без имени",
+    phone: row["Телефон"] || "",
+    address: row["Адрес"] || "",
+    deal: row["Рекомендованное оборудование"] || "Замер",
+    measurer: inferMeasurer(`${row["Заметки"] || ""} ${row["Статус"] || ""}`),
+    dueAt: parseDateValue(row["Дата замера"] || row["Дата создания"]),
+    status: row["Статус"] || "Замер",
+    note: row["Заметки"] || row["КП"] || "",
+    amoLeadId: row["amo lead id"] || "",
+    })),
+  ];
+
+  const montages = (sheets["Монтажи"]?.rows || []).map((row, index) => ({
+    id: `montage-${index}`,
+    date: parseDateValue(row["Дата монтажа"]),
+    client: row["Клиент"] || "Без имени",
+    address: row["Адрес"] || "",
+    product: row["Оборудование"] || "",
+    crew: row["Бригада"] || "Бригада не указана",
+    materials: row["Комментарий"] || "",
+    revenue: parseMoney(row["Сумма договора"]),
+  }));
+
+  const sales = (sheets["Продажи"]?.rows || []).map((row, index) => ({
+    id: `sale-${row["amo lead id"] || index}`,
+    date: parseDateValue(row["Дата обновления"] || row["Дата создания"]),
+    client: row["Клиент"] || row["Название сделки"] || "Без имени",
+    source: row["Источник/канал"] || row["Теги"] || "Не указано",
+    stage: row["Статус"] || "",
+    amount: parseMoney(row["Бюджет"]),
+    status: /успешно|реализовано/iu.test(row["Статус"] || "") ? "won" : "open",
+  }));
+
+  const tasks = (sheets["Задачи"]?.rows || []).map((row, index) => ({
+    id: `task-${row["amo task id"] || index}`,
+    title: row["Текст"] || row["Тип"] || "Задача",
+    owner: row["Ответственный"] || "Не указан",
+    dueAt: parseDateValue(row["Дата выполнения"]),
+    status: row["Статус"] || "",
+  }));
+
+  const updated = raw.summary?.updated || "не указано";
+  return {
+    measurements,
+    montages,
+    clients,
+    sales,
+    tasks,
+    agentEvents: [
+      { time: updated, text: `Данные загружены из реальных вкладок: ${Object.keys(sheets).join(", ")}` },
+    ],
+  };
+};
+
+const normalizeDashboardData = (raw) => {
+  if (raw?.sheets) {
+    return normalizeSheetsDashboard(raw);
+  }
+  return {
+    ...emptyData,
+    ...(raw || {}),
+  };
+};
+
 const getLocalMeasurements = () => {
   try {
     return JSON.parse(localStorage.getItem(storageKeys.localMeasurements) || "[]");
@@ -237,9 +245,9 @@ const setLocalMeasurements = (items) => {
 const getData = () => {
   const localMeasurements = getLocalMeasurements();
   return {
-    ...demoData,
+    ...emptyData,
     ...(state.data || {}),
-    measurements: [...localMeasurements, ...((state.data || demoData).measurements || [])],
+    measurements: [...localMeasurements, ...((state.data || emptyData).measurements || [])],
   };
 };
 
@@ -276,25 +284,25 @@ const requestApi = async (path, options = {}) => {
 
 const loadDashboard = async () => {
   if (!state.apiBase) {
-    state.data = null;
-    elements.connectionStatus.textContent = "Демо-режим";
+    state.data = emptyData;
+    elements.connectionStatus.textContent = "API не указан";
     elements.connectionStatus.classList.remove("is-live");
-    setNotice("Сейчас показаны демо-данные. Укажи API VPS в кнопке API, и панель начнет брать живые сделки, монтажи и документы.");
+    setNotice("API не указан. Панель не показывает примерные данные: укажи адрес VPS API.");
     render();
     return;
   }
 
   try {
     const payload = await requestApi("/dashboard");
-    state.data = payload.data || payload;
+    state.data = normalizeDashboardData(payload.data || payload);
     elements.connectionStatus.textContent = "VPS подключен";
     elements.connectionStatus.classList.add("is-live");
     setNotice("");
   } catch (error) {
-    state.data = null;
+    state.data = emptyData;
     elements.connectionStatus.textContent = "API недоступен";
     elements.connectionStatus.classList.remove("is-live");
-    setNotice(`${error.message}. Показываю демо-данные, чтобы панель оставалась рабочей.`);
+    setNotice(`${error.message}. Данные не подменяются примером.`);
   }
   render();
 };

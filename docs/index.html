@@ -16,7 +16,7 @@
     />
     <link rel="stylesheet" href="./styles.css" />
     <script>
-      window.SEPTIK_API_BASE_URL = window.SEPTIK_API_BASE_URL || "";
+      window.SEPTIK_API_BASE_URL = window.SEPTIK_API_BASE_URL || window.location.origin;
     </script>
   </head>
   <body>
@@ -56,7 +56,7 @@
             <h1 id="pageTitle">Замеры</h1>
           </div>
           <div class="topbar-actions">
-            <span class="status-pill" id="connectionStatus">Демо-режим</span>
+            <span class="status-pill" id="connectionStatus">Подключение...</span>
             <button class="primary-button" type="button" id="addMeasurementButton">Добавить замер</button>
           </div>
         </header>
@@ -182,7 +182,7 @@
         </p>
         <div class="form-actions">
           <button class="primary-button" type="submit">Сохранить</button>
-          <button class="ghost-button" type="button" id="clearApiButton">Демо-режим</button>
+          <button class="ghost-button" type="button" id="clearApiButton">Отключить API</button>
         </div>
       </form>
     </dialog>
