@@ -16,7 +16,11 @@
     />
     <link rel="stylesheet" href="./styles.css" />
     <script>
-      window.SEPTIK_API_BASE_URL = window.SEPTIK_API_BASE_URL || "http://186.246.46.183";
+      window.SEPTIK_VPS_ORIGIN = "http://186.246.46.183";
+      if (window.location.hostname !== "186.246.46.183" && window.location.protocol !== "file:") {
+        window.location.replace(window.SEPTIK_VPS_ORIGIN + "/");
+      }
+      window.SEPTIK_API_BASE_URL = window.SEPTIK_API_BASE_URL || window.SEPTIK_VPS_ORIGIN;
     </script>
   </head>
   <body>

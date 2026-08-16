@@ -272,7 +272,7 @@ const requestApi = async (path, options = {}) => {
       "Content-Type": "application/json",
       ...(options.headers || {}),
     },
-    credentials: "include",
+    credentials: "omit",
     body: options.body ? JSON.stringify(options.body) : undefined,
   });
   const payload = await response.json().catch(() => ({}));
@@ -299,10 +299,22 @@ const loadDashboard = async () => {
     elements.connectionStatus.classList.add("is-live");
     setNotice("");
   } catch (error) {
-    state.data = emptyData;
-    elements.connectionStatus.textContent = "API недоступен";
-    elements.connectionStatus.classList.remove("is-live");
-    setNotice(`${error.message}. Данные не подменяются примером.`);
+    try {
+      const fallbackResponse = await fetch("./dashboard.json", { cache: "no-store" });
+      if (!fallbackResponse.ok) {
+        throw new Error(`Ошибка dashboard.json ${fallbackResponse.status}`);
+      }
+      const fallbackPayload = await fallbackResponse.json();
+      state.data = normalizeDashboardData(fallbackPayload.data || fallbackPayload);
+      elements.connectionStatus.textContent = "Данные загружены";
+      elements.connectionStatus.classList.add("is-live");
+      setNotice("API-запрос не прошел, поэтому панель загрузила свежий локальный dashboard.json с VPS.");
+    } catch (fallbackError) {
+      state.data = emptyData;
+      elements.connectionStatus.textContent = "API недоступен";
+      elements.connectionStatus.classList.remove("is-live");
+      setNotice(`${error.message}. Резервная загрузка тоже не прошла: ${fallbackError.message}.`);
+    }
   }
   render();
 };
