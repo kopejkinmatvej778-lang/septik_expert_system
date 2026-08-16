@@ -9,7 +9,7 @@ const state = {
   measurementFilter: "all",
   salesPeriod: "week",
   selectedClientId: "",
-  apiBase: localStorage.getItem(storageKeys.apiBase) || window.SEPTIK_API_BASE_URL || "",
+  apiBase: window.SEPTIK_API_BASE_URL || localStorage.getItem(storageKeys.apiBase) || "",
   data: null,
 };
 
