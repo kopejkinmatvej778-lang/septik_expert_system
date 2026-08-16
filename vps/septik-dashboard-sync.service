@@ -1,0 +1,8 @@
+[Unit]
+Description=Update Septik Expert dashboard from amoCRM and Google Sheets
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/septik-kp-bot
+ExecStart=/usr/bin/python3 /opt/septik-panel/update_dashboard.py
