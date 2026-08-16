@@ -324,6 +324,73 @@ function cleanText(value: unknown, fallback = "", max = 480) {
   return String(value ?? fallback).trim().slice(0, max);
 }
 
+function extractMeasurer(text: string) {
+  const match = text.match(/(?:замерщик|ответственный\s+за\s+замер)\s*[:\-\s]?\s*([А-ЯЁA-Z][а-яёa-z]+)/i);
+  return match?.[1] ?? "";
+}
+
+function looksLikeMeasurementDeal(row: Record<string, unknown>) {
+  const text = `${row.title ?? ""} ${row.statusName ?? ""} ${row.pipelineName ?? ""}`.toLowerCase();
+  return text.includes("замер");
+}
+
+function looksLikeMeasurementTask(row: Record<string, unknown>) {
+  const text = `${row.text ?? ""} ${row.dealTitle ?? ""}`.toLowerCase();
+  return text.includes("замер");
+}
+
+function buildAmoMeasurementRows(
+  salesRows: Array<Record<string, unknown>>,
+  taskRows: Array<Record<string, unknown>>,
+  existingLeadIds: Set<string>,
+) {
+  const byLeadId = new Map<string, Record<string, unknown>>();
+  for (const row of salesRows) {
+    const leadId = cleanText(row.amoLeadId);
+    if (!leadId || existingLeadIds.has(leadId) || !looksLikeMeasurementDeal(row)) {
+      continue;
+    }
+    byLeadId.set(leadId, row);
+  }
+
+  for (const task of taskRows) {
+    const leadId = cleanText(task.amoLeadId);
+    if (!leadId || existingLeadIds.has(leadId) || !looksLikeMeasurementTask(task)) {
+      continue;
+    }
+    byLeadId.set(leadId, { ...(byLeadId.get(leadId) ?? {}), ...task });
+  }
+
+  return Array.from(byLeadId.entries()).map(([leadId, row]) => {
+    const taskText = cleanText(row.text, "", 900);
+    const title = cleanText(row.dealTitle) || cleanText(row.title) || `Сделка ${leadId}`;
+    return {
+      id: `amo-${leadId}`,
+      clientName: cleanText(row.clientName) || title,
+      phone: cleanText(row.phone),
+      address: title,
+      status: "from_amocrm",
+      source: "amocrm",
+      scheduledAt: cleanText(row.dueAt) || cleanText(row.nextTaskAt),
+      measuredAt: "",
+      soil: "",
+      groundwater: "",
+      pipeDepth: "",
+      distanceToHouse: "",
+      recommendedEquipment: "",
+      photosCount: 0,
+      telegramChatId: "",
+      amoLeadId: leadId,
+      sheetRowUrl: "",
+      notes: taskText,
+      taskText,
+      measurer: extractMeasurer(taskText),
+      manager: cleanText(row.responsibleUserName) || cleanText(row.responsibleUserId),
+      createdAt: cleanText(row.updatedAt) || new Date().toISOString(),
+    };
+  });
+}
+
 export async function GET() {
   try {
     await ensureDatabase();
@@ -368,6 +435,11 @@ export async function GET() {
         "SELECT sales_tasks.id, sales_tasks.amo_task_id AS amoTaskId, sales_tasks.amo_lead_id AS amoLeadId, sales_tasks.text, sales_tasks.responsible_user_id AS responsibleUserId, sales_tasks.responsible_user_name AS responsibleUserName, sales_tasks.due_at AS dueAt, sales_deals.title AS dealTitle, sales_deals.client_name AS clientName FROM sales_tasks LEFT JOIN sales_deals ON sales_deals.amo_lead_id = sales_tasks.amo_lead_id WHERE sales_tasks.is_completed = 0 ORDER BY sales_tasks.due_at ASC, sales_tasks.id DESC LIMIT 100",
       )
       .all();
+    const measurementResults = (measurements.results ?? []) as Array<Record<string, unknown>>;
+    const salesResults = (sales.results ?? []) as Array<Record<string, unknown>>;
+    const salesTaskResults = (salesTasks.results ?? []) as Array<Record<string, unknown>>;
+    const existingMeasurementLeadIds = new Set(measurementResults.map((row) => cleanText(row.amoLeadId)).filter(Boolean));
+    const amoMeasurementRows = buildAmoMeasurementRows(salesResults, salesTaskResults, existingMeasurementLeadIds);
     const docStats = await db
       .prepare(
         "SELECT SUM(CASE WHEN type = 'proposal' THEN 1 ELSE 0 END) AS proposals, SUM(CASE WHEN type = 'contract' THEN 1 ELSE 0 END) AS contracts, SUM(CASE WHEN status IN ('signed', 'approved', 'issued') THEN amount ELSE 0 END) AS activeAmount, SUM(CASE WHEN status IN ('draft', 'needs_review', 'ready') THEN 1 ELSE 0 END) AS attention FROM documents",
@@ -383,13 +455,13 @@ export async function GET() {
       .first();
 
     return Response.json({
-      stats: { ...docStats, ...operationStats, ...salesStats },
+      stats: { ...docStats, ...operationStats, ...salesStats, measurements: measurementResults.length + amoMeasurementRows.length },
       documents: documents.results,
-      measurements: measurements.results,
+      measurements: [...measurementResults, ...amoMeasurementRows],
       montages: montages.results,
-      sales: sales.results,
+      sales: salesResults,
       salesPipelines: salesPipelines.results,
-      salesTasks: salesTasks.results,
+      salesTasks: salesTaskResults,
       events: events.results,
     });
   } catch (error) {

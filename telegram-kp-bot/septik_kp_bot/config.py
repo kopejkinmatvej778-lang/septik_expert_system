@@ -19,6 +19,13 @@ def _ids(value: str) -> set[int]:
     return result
 
 
+def _bool(value: str | None, default: bool = False) -> bool:
+    raw = (value or "").strip().lower()
+    if not raw:
+        return default
+    return raw in {"1", "true", "yes", "y", "on", "да"}
+
+
 def _path(value: str | None, default: str) -> Path:
     raw = (value or default).strip()
     path = Path(raw)
@@ -54,6 +61,9 @@ class Settings:
     amocrm_client_id: str | None
     amocrm_client_secret: str | None
     amocrm_redirect_uri: str | None
+    amocrm_update_lead_price: bool
+    amocrm_task_report_chat_ids: set[int]
+    amocrm_task_due_hour: int
 
 
 def load_settings(require_bot: bool = True) -> Settings:
@@ -91,4 +101,7 @@ def load_settings(require_bot: bool = True) -> Settings:
         amocrm_client_id=os.getenv("AMOCRM_CLIENT_ID", "").strip() or None,
         amocrm_client_secret=os.getenv("AMOCRM_CLIENT_SECRET", "").strip() or None,
         amocrm_redirect_uri=os.getenv("AMOCRM_REDIRECT_URI", "").strip() or None,
+        amocrm_update_lead_price=_bool(os.getenv("AMOCRM_UPDATE_LEAD_PRICE"), True),
+        amocrm_task_report_chat_ids=_ids(os.getenv("AMOCRM_TASK_REPORT_CHAT_IDS", "")),
+        amocrm_task_due_hour=int(os.getenv("AMOCRM_TASK_DUE_HOUR", "11").strip() or "11"),
     )

@@ -1,0 +1,9 @@
+[Unit]
+Description=Run Septik Expert amoCRM deals without tasks agent every day at 18:00
+
+[Timer]
+OnCalendar=*-*-* 18:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

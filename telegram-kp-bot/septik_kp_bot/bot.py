@@ -241,6 +241,15 @@ async def callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
                 caption += f"\nGoogle sync не выполнен: {upload['sync_skipped']}"
             elif upload.get("sync_error"):
                 caption += "\nGoogle sync не выполнен: ошибка, смотри лог сервера."
+            amo_result = upload.get("amocrm") or {}
+            if amo_result.get("ok"):
+                caption += f"\namoCRM: сделка {amo_result.get('amo_lead_id')} связана с КП."
+            elif amo_result.get("matched_leads"):
+                caption += "\namoCRM: найдено несколько похожих сделок, проверь вручную."
+            elif amo_result.get("sync_skipped"):
+                caption += f"\namoCRM: {amo_result['sync_skipped']}"
+            elif upload.get("amocrm_error"):
+                caption += "\namoCRM: ошибка синхронизации, смотри лог сервера."
             await query.message.reply_photo(photo=fh, caption=caption)
         return
 

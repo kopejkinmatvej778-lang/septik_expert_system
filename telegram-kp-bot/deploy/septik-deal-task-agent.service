@@ -1,0 +1,10 @@
+[Unit]
+Description=Septik Expert amoCRM deals without tasks agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/septik-kp-bot
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/septik-kp-bot/.venv/bin/python -m septik_kp_bot.deal_task_agent

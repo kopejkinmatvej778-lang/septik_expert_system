@@ -9,7 +9,11 @@ async function render() {
 
   return worker.fetch(
     new Request("http://localhost/", {
-      headers: { accept: "text/html" },
+      headers: {
+        accept: "text/html",
+        "oai-authenticated-user-id": "test-user",
+        "oai-authenticated-user-email": "owner@example.com",
+      },
     }),
     {
       ASSETS: {
@@ -31,10 +35,11 @@ test("server-renders the Septik Expert control panel shell", async () => {
   const html = await response.text();
   assert.match(html, /<title>Septik Expert Control<\/title>/i);
   assert.match(html, /Septik Expert/);
-  assert.match(html, /Клиенты/);
-  assert.match(html, /Договоры/);
+  assert.match(html, /Замеры/);
+  assert.match(html, /База/);
   assert.match(html, /Монтажи/);
   assert.match(html, /Продажи/);
+  assert.match(html, /signin-with-chatgpt|Рабочий центр/);
   assert.doesNotMatch(html, /Your site is taking shape|Building your site|codex-preview/i);
   assert.doesNotMatch(html, /AI Control|AI-питомцы|3D-диспетчерская/i);
 });
@@ -48,6 +53,8 @@ test("dashboard API no longer creates demo clients or seed documents", async () 
   assert.match(route, /sales_deals/);
   assert.match(route, /sales_pipelines/);
   assert.match(route, /sales_tasks/);
+  assert.match(route, /buildAmoMeasurementRows/);
+  assert.match(route, /ответственный\\s\+за\\s\+замер|замерщик/);
 });
 
 test("3D scene source is removed from the panel", async () => {
